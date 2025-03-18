@@ -1,0 +1,43 @@
+<view class="container">
+  <!-- 未登录状态 -->
+  <block wx:if="{{!isLoggedIn}}">
+    <view class="logo-container">
+      <image class="logo" src="/images/logo.png" mode="aspectFit"></image>
+    </view>
+    
+    <view class="title">欢迎使用小程序</view>
+    <view class="subtitle">登录后体验更多功能</view>
+    
+    <button class="login-btn" type="primary" bindtap="login" loading="{{isLoading}}">
+      <image class="wechat-icon" src="/images/wechat.png" mode="aspectFit"></image>
+      微信一键登录
+    </button>
+    
+    <view class="privacy-policy">
+      登录即表示您同意<text class="link" bindtap="showPrivacyPolicy">《用户协议和隐私政策》</text>
+    </view>
+  </block>
+  
+  <!-- 已登录状态 -->
+  <block wx:else>
+    <view class="user-info-container">
+      <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+      <view class="user-details">
+        <view class="nickname">{{userInfo.nickName}}</view>
+        <view class="welcome-text">欢迎回来！</view>
+      </view>
+    </view>
+    
+    <view class="function-buttons">
+      <button class="function-btn" bindtap="goToFileUpload">
+        <image class="btn-icon" src="/images/upload.png" mode="aspectFit"></image>
+        文件上传
+      </button>
+      
+      <button class="function-btn" bindtap="logout">
+        <image class="btn-icon" src="/images/logout.png" mode="aspectFit"></image>
+        退出登录
+      </button>
+    </view>
+  </block>
+</view>
